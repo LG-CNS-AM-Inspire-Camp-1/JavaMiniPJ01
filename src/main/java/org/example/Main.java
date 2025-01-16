@@ -14,10 +14,10 @@ public class Main {
     private final LotteryMain processLotteryManagement = new LotteryMain();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        processSubscriptionManagement(scanner);
-        processMusicManagement(scanner);
-        runMovieOperator(scanner);
-        RestaurantManagementMethod(scanner); // 김대현->식당관리
+//        processSubscriptionManagement(scanner);
+//        processMusicManagement(scanner);
+//        runMovieOperator(scanner);
+//        RestaurantManagementMethod(scanner); // 김대현->식당관리
         new LotteryMain().LotteryMain(scanner); // 김우영
     }
 
