@@ -1,0 +1,7 @@
+# 모든 텍스트 파일에서 LF 사용
+* text=auto
+
+# 특정 파일 확장자에서 LF 사용
+*.java text eol=lf
+*.xml text eol=lf
+*.gitignore text eol=lf

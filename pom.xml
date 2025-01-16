@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 프로젝트 정보 -->
+    <groupId>org.example</groupId>
+    <artifactId>JavaMiniPJ01</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- Java 버전 및 인코딩 설정 -->
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- 프로젝트 의존성 -->
+    <dependencies>
+        <!-- Lombok 의존성 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version> <!-- 최신 버전 권장 -->
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
