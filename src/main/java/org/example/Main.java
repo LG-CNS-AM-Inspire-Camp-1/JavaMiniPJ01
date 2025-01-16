@@ -18,7 +18,7 @@ public class Main {
 //        processMusicManagement(scanner);
 //        runMovieOperator(scanner);
 //        RestaurantManagementMethod(scanner); // 김대현->식당관리
-        new LotteryMain().LotteryMain(scanner); // 김우영
+        new LotteryMain().LotteryManagementProcess(scanner); // 김우영
     }
 
     // 구독 관리 메서드

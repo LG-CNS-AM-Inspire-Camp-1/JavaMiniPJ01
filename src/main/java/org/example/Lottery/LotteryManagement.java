@@ -16,7 +16,7 @@ public class LotteryManagement {
     private List<Integer> lottery = new ArrayList<>(); // 당첨 번호 저장
 
     public List<Lottery> sellLottery(int tickets) {
-        List<Lottery> lotteries = new ArrayList<Lottery>();
+        List<Lottery> lotteries = new ArrayList<>();
         for (int i = 0; i < tickets; i++) {
             lotteries.add(Lottery.makeLottery());
         }
@@ -46,7 +46,7 @@ public class LotteryManagement {
         }else{
             int firstPrize = (int) (this.account / firstPrizeWinners);
 
-            int finalFirstPrize = (int) (Math.round(firstPrize / 1000.0) * 1000);;
+            int finalFirstPrize = (int) (Math.round(firstPrize / 1000.0) * 1000);
 
             this.account -= finalFirstPrize;
             buyers.forEach(buyer -> {
@@ -59,9 +59,5 @@ public class LotteryManagement {
             });
         }
 
-    }
-
-    private int calculatePrizeMoney(int matchedCount, int firstPrize) {
-        return matchedCount * firstPrize;
     }
 }

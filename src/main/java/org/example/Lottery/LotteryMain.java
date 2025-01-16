@@ -28,7 +28,7 @@ public class LotteryMain {
         new Buyer(3,"홍길남", 10000),
         new Buyer(4,"홍길북", 10000)));
 
-    public void LotteryMain(Scanner scanner) {
+    public void LotteryManagementProcess(Scanner scanner) {
         Buyer currentBuyer = buyers.get(0);
         while(true){
 
