@@ -69,6 +69,7 @@ public class PlayerManager
 						System.out.println("├ 3. UUID: "+p.getUuid().toString());
 						System.out.println("├ 4. 소유금액: "+p.getMoney()+"원");
 						System.out.println("└ 5. 생성날짜: "+simpleFormat.format(p.getDate()));
+						System.out.println("▣ 플레이어 <"+ name + ">가 생성되었습니다.");
 						
 						return false;
 					}
