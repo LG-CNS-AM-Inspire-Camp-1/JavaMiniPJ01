@@ -8,13 +8,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        processSubscriptionManagement();
+        Scanner scanner = new Scanner(System.in);
+        processSubscriptionManagement(scanner);
     }
 
     // 구독 관리 메서드
-    private static void processSubscriptionManagement() {
+    private static void processSubscriptionManagement(Scanner scanner) {
         SubscriptionManager manager = new SubscriptionManager();
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("\n===== 구독 관리 시스템 =====");
