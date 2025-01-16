@@ -120,6 +120,7 @@ public class Main {
         }
     }
 
+    // 영화목록 관리 메서드
     public static void runMovieOperator(Scanner scanner) {
         new MovieOperator(scanner);
     }
