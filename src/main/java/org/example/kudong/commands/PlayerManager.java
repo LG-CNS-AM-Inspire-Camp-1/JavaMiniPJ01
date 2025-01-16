@@ -28,7 +28,7 @@ public class PlayerManager
 	{
 		System.out.println("▣ 플레이어 입력 등록을 시작합니다.");
 		System.out.println("▣ 플레이어의 아이디를 입력해주세요! (- 입력시 취소)");
-		System.out.print(">");
+		System.out.print("> ");
 		
 		this.sessionManager.start((name)->{
 			
@@ -46,7 +46,7 @@ public class PlayerManager
 			{
 				System.out.println("▣ 입력된 플레이어 아이디> " + name);
 				System.out.println("▣ 플레이어의 이메일을 입력하세요! (- 입력시 취소)");
-				System.out.print(">");
+				System.out.print("> ");
 				
 				this.sessionManager.start((email)->{
 					
@@ -74,7 +74,7 @@ public class PlayerManager
 					else
 					{
 						System.out.println("▣ 유효하지 않은 이메일 주소입니다. 다시 입력하세요!");
-						System.out.print(">");
+						System.out.print("> ");
 						return true;
 					}	
 				});
@@ -86,7 +86,7 @@ public class PlayerManager
 	public void removePlayer(Scanner sc)
 	{
 		System.out.println("▣ 삭제하려는 플레이어의 아이디를 입력해주세요! (- 입력시 취소)");
-		System.out.print(">");
+		System.out.print("> ");
 		
 		this.sessionManager.start((name)->{
 			
@@ -113,7 +113,7 @@ public class PlayerManager
 				System.out.println("├ 3. UUID: "+p.getUuid().toString());
 				System.out.println("└ 4. 날짜: "+simpleFormat.format(p.getDate()));
 				System.out.println("▣ 해당 플레이어를 삭제하시겠습니까? Y/N 입력");
-				System.out.print(">");
+				System.out.print("> ");
 				
 				this.sessionManager.start((result)->{
 					
@@ -137,12 +137,16 @@ public class PlayerManager
 	public void findPlayer(Scanner sc)
 	{
 		System.out.println("▣ 찾으시는 플레이어의 아이디를 입력하세요 (- 입력시 취소)");
-		System.out.print(">");
+		System.out.print("> ");
 		
 		String name = sc.next();
         sc.nextLine();
         
-		if(this.playerMap.containsKey(name) == false)
+		if(name.equals("-"))
+		{
+			System.out.println("▣ 취소 하였습니다.");
+		}
+		else if(this.playerMap.containsKey(name) == false)
 		{
 			System.out.println("▣ 해당 플레이어는 존재하지 않습니다!");
 		}

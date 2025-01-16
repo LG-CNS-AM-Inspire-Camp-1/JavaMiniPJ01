@@ -63,7 +63,7 @@ public class ServerManageModule implements CLIModule
 		System.out.println(" 2. 플레이어 삭제");
 		System.out.println(" 3. 플레이어 조회");
 		System.out.println(" 4. 플레이어 리스트 출력");
-		System.out.println(" X. 메인으로");
+		System.out.println(" X. 종료하기");
 		System.out.println("---------------------------");
 		System.out.print("> ");
 	}
