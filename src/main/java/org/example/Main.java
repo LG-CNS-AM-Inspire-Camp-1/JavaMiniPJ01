@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 import org.example.KDHRestaurant.RestaurantManagement;
 import org.example.Lottery.LotteryMain;
-import org.example.ShoppingManagements.ShoppingManagement;
+import org.example.ShoppingManagement.ShoppingManagement;
 import org.example.kudong.KUDONGMain;
 import org.example.movie.MovieOperator;
+import org.example.AccountSystem.BankApp;
 import org.example.EmailSubscribe.Subscriber;
 import org.example.EmailSubscribe.SubscriptionException;
 import org.example.EmailSubscribe.SubscriptionManager;
@@ -22,6 +23,7 @@ public class Main {
         new LotteryMain().LotteryManagementProcess(scanner); // 김우영
         KUDONGMain.run(scanner); // 구동혁-> 게임 서버 플레이어 관리
         ShoppingManagement(scanner); // 김지현 쇼핑몰관리
+        BankApp.bankStart(scanner);
     }
 
     // 구독 관리 메서드
@@ -160,7 +162,7 @@ public class Main {
 				break;
 			case 5:
 				System.out.println("프로그램을 종료합니다.");
-				scanner.close();
+				//scanner.close();
 				return;
 			default:
 				System.out.println("잘못된 입력입니다.");
