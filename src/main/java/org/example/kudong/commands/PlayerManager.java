@@ -63,11 +63,12 @@ public class PlayerManager
 						Player p = this.createPlayer(name, email);
 						this.playerMap.put(name, p);
 						
-						System.out.println("▣ 플레이어 <"+name+">가 생성되었습니다. ");
-						System.out.println("┌ 1. 이름: "+p.getName());
+						System.out.println("▣ 플레이어 <"+name+">의 정보");
+						System.out.println("┌ 1. 아이디: "+p.getName());
 						System.out.println("├ 2. 이메일: "+p.getEmail());
 						System.out.println("├ 3. UUID: "+p.getUuid().toString());
-						System.out.println("└ 4. 날짜: "+simpleFormat.format(p.getDate()));
+						System.out.println("├ 4. 소유금액: "+p.getMoney()+"원");
+						System.out.println("└ 5. 생성날짜: "+simpleFormat.format(p.getDate()));
 						
 						return false;
 					}
@@ -108,10 +109,11 @@ public class PlayerManager
 				Player p = this.playerMap.get(name);
 				
 				System.out.println("▣ 플레이어 <"+name+">의 정보");
-				System.out.println("┌ 1. 이름: "+p.getName());
+				System.out.println("┌ 1. 아이디: "+p.getName());
 				System.out.println("├ 2. 이메일: "+p.getEmail());
 				System.out.println("├ 3. UUID: "+p.getUuid().toString());
-				System.out.println("└ 4. 날짜: "+simpleFormat.format(p.getDate()));
+				System.out.println("├ 4. 소유금액: "+p.getMoney()+"원");
+				System.out.println("└ 5. 생성날짜: "+simpleFormat.format(p.getDate()));
 				System.out.println("▣ 해당 플레이어를 삭제하시겠습니까? Y/N 입력");
 				System.out.print("> ");
 				
@@ -155,10 +157,11 @@ public class PlayerManager
 			Player p = this.playerMap.get(name);
 			
 			System.out.println("▣ 플레이어 <"+name+">의 정보");
-			System.out.println("┌ 1. 이름: "+p.getName());
+			System.out.println("┌ 1. 아이디: "+p.getName());
 			System.out.println("├ 2. 이메일: "+p.getEmail());
 			System.out.println("├ 3. UUID: "+p.getUuid().toString());
-			System.out.println("└ 4. 날짜: "+simpleFormat.format(p.getDate()));
+			System.out.println("├ 4. 소유금액: "+p.getMoney()+"원");
+			System.out.println("└ 5. 생성날짜: "+simpleFormat.format(p.getDate()));
 		}
 	}
 	
@@ -174,13 +177,76 @@ public class PlayerManager
 
 		this.playerMap.forEach((name,p)->{
 			System.out.println("▣ 플레이어 <"+name+">의 정보");
-			System.out.println("┌ 1. 이름: "+p.getName());
+			System.out.println("┌ 1. 아이디: "+p.getName());
 			System.out.println("├ 2. 이메일: "+p.getEmail());
 			System.out.println("├ 3. UUID: "+p.getUuid().toString());
-			System.out.println("└ 4. 날짜: "+simpleFormat.format(p.getDate()));
+			System.out.println("├ 4. 소유금액: "+p.getMoney()+"원");
+			System.out.println("└ 5. 생성날짜: "+simpleFormat.format(p.getDate()));
 		});
 		
 		System.out.println("▣ 총 "+this.playerMap.size()+"명의 플레이어가 검색되었습니다.");
+	}
+	
+	public void updatePlayerMoney(Scanner sc)
+	{
+		System.out.println("▣ 플레이어의 아이디를 입력하세요 (- 입력시 취소)");
+		System.out.print("> ");
+		
+		String name = sc.next();
+        sc.nextLine();
+        
+		if(name.equals("-"))
+		{
+			System.out.println("▣ 취소 하였습니다.");
+		}
+		else if(this.playerMap.containsKey(name) == false)
+		{
+			System.out.println("▣ 해당 플레이어는 존재하지 않습니다!");
+		}
+		else
+		{
+			Player p = this.playerMap.get(name);
+			System.out.println("▣ 플레이어 <"+name+">의 소유 금액은 "+p.getMoney()+"원 입니다.");
+			System.out.println("▣ 해당 플레이어를 소유금액을 수정하시겠습니까? Y/N 입력");
+			System.out.print("> ");
+			
+			this.sessionManager.start((result)->{
+				
+				if(result.equalsIgnoreCase("y"))
+				{
+					System.out.println("▣ 수정하고 싶으신 금액을 입력하세요 (- 입력시 취소)");
+					System.out.print("> ");
+					
+					this.sessionManager.start((money)->{
+						
+						if(money.equals("-"))
+						{
+							System.out.println("▣ 취소 하였습니다.");
+							return false;
+						}
+						try
+						{
+							double m = Double.parseDouble(money);
+							p.setMoney(m);
+							System.out.println("▣ 플레이어의 소유금액이 "+m+"원으로 변경되었습니다.");
+							return false;
+						}
+						catch(NumberFormatException e)
+						{
+							System.out.println("▣ 잘못된 숫자가 입력되었습니다. 다시 입력해주세요.");
+							System.out.print("> ");
+							return true;
+						}
+					});
+					return true;
+				}
+				else
+				{
+					System.out.println("▣ 취소 하였습니다.");
+					return false;
+				}
+			});
+		}
 	}
 	
 	public Player createPlayer(String name, String email)
