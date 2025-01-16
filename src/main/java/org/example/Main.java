@@ -1,7 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
-
+import org.example.movie.MovieOperator;
 import org.example.EmailSubscribe.Subscriber;
 import org.example.EmailSubscribe.SubscriptionException;
 import org.example.EmailSubscribe.SubscriptionManager;
@@ -12,6 +12,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         processSubscriptionManagement(scanner);
         processMusicManagement(scanner);
+        runMovieOperator(scanner);
     }
 
     // 구독 관리 메서드
@@ -75,47 +76,52 @@ public class Main {
             }
         }
     }
-    
+
     // 음악 목록 관리 메서드
     public static void processMusicManagement(Scanner scanner) {
-    	MusicManagement music = new MusicManagement();
-		
-		// 사용자 입력
-		while(true) {
-			System.out.println("\n----- 음악 목록 관리 ----- ");
-			System.out.println("1. 음악 등록");
-			System.out.println("2. 전체 음악 출력");
-			System.out.println("3. 음악 검색");
-			System.out.println("4. 음악 삭제");
-			System.out.println("5. 인기 음악 조회");
-			System.out.println("6. 종료");
-			System.out.print("메뉴 선택 : ");
-			
-			int choice = scanner.nextInt();
-			scanner.nextLine();		// 개행문자 제거
-			
-            switch(choice) {
-			case 1:
-				music.addMusic(scanner);
-				break;
-			case 2:
-				music.printAllMusic();
-				break;
-			case 3:
-				music.searchMusic(scanner);
-				break;
-			case 4:
-				music.deleteMusic(scanner);
-				break;
-			case 5:
-				music.mostPlayedMusic();
-				break;
-			case 6:
-				System.out.println("프로그램을 종료합니다.");
-				return;
-			default:
-				System.out.println("잘못된 입력입니다.");	
-			}
-		}
+        MusicManagement music = new MusicManagement();
+
+        // 사용자 입력
+        while (true) {
+            System.out.println("\n----- 음악 목록 관리 ----- ");
+            System.out.println("1. 음악 등록");
+            System.out.println("2. 전체 음악 출력");
+            System.out.println("3. 음악 검색");
+            System.out.println("4. 음악 삭제");
+            System.out.println("5. 인기 음악 조회");
+            System.out.println("6. 종료");
+            System.out.print("메뉴 선택 : ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();        // 개행문자 제거
+
+            switch (choice) {
+                case 1:
+                    music.addMusic(scanner);
+                    break;
+                case 2:
+                    music.printAllMusic();
+                    break;
+                case 3:
+                    music.searchMusic(scanner);
+                    break;
+                case 4:
+                    music.deleteMusic(scanner);
+                    break;
+                case 5:
+                    music.mostPlayedMusic();
+                    break;
+                case 6:
+                    System.out.println("프로그램을 종료합니다.");
+                    return;
+                default:
+                    System.out.println("잘못된 입력입니다.");
+            }
+        }
+    }
+
+    public static void runMovieOperator(Scanner scanner) {
+        new MovieOperator(scanner);
     }
 }
+
