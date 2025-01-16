@@ -3,7 +3,7 @@ import java.util.*;
 
 public class SubscriptionManager {
     //구독자 리스트 생성
-    private List<Subscriber> subscriberList = new ArrayList<>();
+    private final List<Subscriber> subscriberList = new ArrayList<>();
     // userId에 반영될 자동 증가 변수
     private int nextUserId = 1;
 
@@ -22,14 +22,23 @@ public class SubscriptionManager {
     }
 
     //구독 조회
-    public void findSubscriber(String info) {
+    public Subscriber findSubscriber(String info) {
         for (Subscriber subscriber : subscriberList) {
             if (subscriber.getEmail().equalsIgnoreCase(info) || subscriber.getName().equalsIgnoreCase(info)) {
                 System.out.println("구독자 정보 : " + subscriber);
-                return;
+                return subscriber;
             }
         }
         throw new SubscriptionException("해당 정보와 일치하는 구독자를 찾을 수 없습니다.");
+    }
+
+    //구독 정보 수정
+    public void updateSubscriber(String email, String name, Subscriber subscriber) {
+        int userId = subscriber.getUserId();
+        subscriberList.remove(subscriber);
+        Subscriber updateSubscriber = new Subscriber(userId, name, email);
+        subscriberList.add(updateSubscriber);
+        System.out.println("구독 정보가 수정되었습니다.");
     }
 
     //구독 취소
