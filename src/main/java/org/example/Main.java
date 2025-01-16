@@ -1,13 +1,12 @@
 package org.example;
 
-import movie.MovieOperator;
+import org.example.movie.MovieOperator;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         runMovieOperator(scanner);
     }
 

@@ -1,4 +1,4 @@
-package movie;
+package org.example.movie;
 
 import java.util.*;
 import java.util.stream.Collectors;
