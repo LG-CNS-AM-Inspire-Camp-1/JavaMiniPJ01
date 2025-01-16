@@ -1,8 +1,6 @@
 package org.example.Lottery;
 
 import lombok.NoArgsConstructor;
-
-import java.io.Console;
 import java.util.*;
 
 @NoArgsConstructor
