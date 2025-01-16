@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import org.example.KDHRestaurant.RestaurantManagement;
 import org.example.Lottery.LotteryMain;
+import org.example.ShoppingManagements.ShoppingManagement;
 import org.example.kudong.KUDONGMain;
 import org.example.movie.MovieOperator;
 import org.example.EmailSubscribe.Subscriber;
@@ -20,6 +21,7 @@ public class Main {
         RestaurantManagementMethod(scanner); // 김대현->식당관리
         new LotteryMain().LotteryManagementProcess(scanner); // 김우영
         KUDONGMain.run(scanner); // 구동혁-> 게임 서버 플레이어 관리
+        ShoppingManagement(scanner); // 김지현 쇼핑몰관리
     }
 
     // 구독 관리 메서드
@@ -126,6 +128,45 @@ public class Main {
             }
         }
     }
+    // 쇼핑몰 상품 관리 메서드
+    public static void ShoppingManagement(Scanner scanner) {
+    	ShoppingManagement product = new ShoppingManagement();
+
+        // 사용자 입력
+        while (true) {
+        	System.out.println("\n상품 관리:");
+    		System.out.println("1. 상품 등록");
+            System.out.println("2. 전체 상품 출력");
+            System.out.println("3. 상품 검색");
+            System.out.println("4. 상품 삭제");
+            System.out.println("5. 종료");
+            System.out.print("메뉴를 선택하세요: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();     
+
+            switch(choice) {
+			case 1:
+				product.addProduct(scanner);
+				break;
+			case 2:
+				product.listProducts();
+				break;
+			case 3:
+				product.searchProduct(scanner);
+				break;
+			case 4:
+				product.deleteProduct(scanner);
+				break;
+			case 5:
+				System.out.println("프로그램을 종료합니다.");
+				scanner.close();
+				return;
+			default:
+				System.out.println("잘못된 입력입니다.");
+			}
+        }
+    }
 
     // 영화목록 관리 메서드
     public static void runMovieOperator(Scanner scanner) {
@@ -193,4 +234,3 @@ public class Main {
         }
     }
 }
-
