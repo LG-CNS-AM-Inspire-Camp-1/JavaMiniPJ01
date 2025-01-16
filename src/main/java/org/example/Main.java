@@ -3,6 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 import org.example.KDHRestaurant.RestaurantManagement;
+import org.example.Lottery.LotteryMain;
 import org.example.movie.MovieOperator;
 import org.example.EmailSubscribe.Subscriber;
 import org.example.EmailSubscribe.SubscriptionException;
@@ -10,12 +11,14 @@ import org.example.EmailSubscribe.SubscriptionManager;
 import org.example.musicManagement.MusicManagement;
 
 public class Main {
+    private final LotteryMain processLotteryManagement = new LotteryMain();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         processSubscriptionManagement(scanner);
         processMusicManagement(scanner);
         runMovieOperator(scanner);
         RestaurantManagementMethod(scanner); // 김대현->식당관리
+        new LotteryMain().LotteryMain(scanner); // 김우영
     }
 
     // 구독 관리 메서드
