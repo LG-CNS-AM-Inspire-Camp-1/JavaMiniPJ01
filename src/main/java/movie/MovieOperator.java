@@ -37,7 +37,6 @@ public class MovieOperator {
                     break;
                 case 6:
                     System.out.println("프로그램을 종료합니다.");
-                    scanner.close();
                     return;
                 default:
                     System.out.println("잘못된 입력입니다. 다시 시도하세요.");
