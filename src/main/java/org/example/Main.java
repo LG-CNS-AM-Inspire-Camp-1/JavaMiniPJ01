@@ -3,6 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 import org.example.KDHRestaurant.RestaurantManagement;
+import org.example.kudong.KUDONGMain;
 import org.example.movie.MovieOperator;
 import org.example.EmailSubscribe.Subscriber;
 import org.example.EmailSubscribe.SubscriptionException;
@@ -16,6 +17,7 @@ public class Main {
         processMusicManagement(scanner);
         runMovieOperator(scanner);
         RestaurantManagementMethod(scanner); // 김대현->식당관리
+        KUDONGMain.run(scanner); // 구동혁-> 게임 서버 플레이어 관리
     }
 
     // 구독 관리 메서드
