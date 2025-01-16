@@ -1,6 +1,8 @@
 package org.example;
 
 import java.util.Scanner;
+
+import org.example.KDHRestaurant.RestaurantManagement;
 import org.example.movie.MovieOperator;
 import org.example.EmailSubscribe.Subscriber;
 import org.example.EmailSubscribe.SubscriptionException;
@@ -13,6 +15,7 @@ public class Main {
         processSubscriptionManagement(scanner);
         processMusicManagement(scanner);
         runMovieOperator(scanner);
+        RestaurantManagementMethod(scanner); // 김대현->식당관리
     }
 
     // 구독 관리 메서드
@@ -123,6 +126,67 @@ public class Main {
     // 영화목록 관리 메서드
     public static void runMovieOperator(Scanner scanner) {
         new MovieOperator(scanner);
+    }
+
+    // 식당 관리 메서드
+    private static void RestaurantManagementMethod(Scanner scanner) {
+        RestaurantManagement management = new RestaurantManagement();
+
+        while (true) {
+            System.out.println("\n=== 식당 관리 시스템 ===");
+            System.out.println("1 → 식당 등록");
+            System.out.println("2 → 전체 식당 목록 조회");
+            System.out.println("3 → 카테고리별 목록 조회");
+            System.out.println("4 → 식당 이름 검색(keyword)");
+            System.out.println("5 → 식당 삭제");
+            System.out.println("6 → 맛집 추천하기(1개만 가능)");
+            System.out.println("7 → Real 맛집 보여주기(추천수 입력)");
+            System.out.println("8 → 종료!");
+
+            System.out.print("옵션을 고르세용~: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // 그 엔터 잡아먹기
+
+            switch (choice) {
+                case 1:
+                    management.addRestaurant(scanner);
+                    break;
+                case 2:
+                    management.listAllRestaurants();
+                    break;
+                case 3:
+                    System.out.print("카테고리 입력: ");
+                    String category = scanner.nextLine();
+                    management.listRestaurantsByCategory(category);
+                    break;
+                case 4:
+                    System.out.print("식당 이름(keword) 입력: ");
+                    String keyword = scanner.nextLine();
+                    management.searchRestaurantsByKeyword(keyword);
+                    break;
+                case 5:
+                    System.out.print("고유 번호를 입력해서 식당 지우기: ");
+                    int idToRemove = scanner.nextInt();
+                    scanner.nextLine();
+                    management.removeRestaurantById(idToRemove);
+                    break;
+                case 6:
+                    management.recommendRestaurant(scanner);
+                    break;
+                case 7:
+                    System.out.print("입력한 추천수 이상의 목록을 보여드려요:  ");
+                    int threshold = scanner.nextInt();
+                    scanner.nextLine();
+                    management.showTopRestaurants(threshold);
+                    break;
+                case 8:
+                    System.out.println("이상, 김대현이었습니다. 감사합니다!");
+//                    scanner.close();
+                    return;
+                default:
+                    System.out.println("유효하지 않은 입력입니다. 다시 입력해주세요!");
+            }
+        }
     }
 }
 
