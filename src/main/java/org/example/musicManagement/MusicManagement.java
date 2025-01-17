@@ -80,12 +80,12 @@ public class MusicManagement {
 		
 		// searchStr 양쪽 공백 제거 후, 소문자로 변환
 		searchStr = searchStr.trim().toLowerCase();
-		boolean isFound = false;	// 음악 찾았는지 여붖 저장
+		boolean isFound = false;	// 음악 찾았는지 여부 저장
 		
 		for(Music m: musics) {
 			if(m.getMusicTitle().toLowerCase().contains(searchStr) ||
 					m.getMusicSinger().toLowerCase().contains(searchStr)) {
-				System.out.println("음악 정보 : " + m);
+				System.out.println("음악 정보 ( " + m + " )");
 				isFound = true;
 				
 				// 음악 재생 여부 질문
@@ -108,7 +108,7 @@ public class MusicManagement {
 	
 	// (기능 4) 음악 삭제
 	public void deleteMusic(Scanner scanner) {
-		System.out.println("삭제하려는 음악 등록 번호 입력 : ");
+		System.out.print("삭제하려는 음악 등록 번호 입력 : ");
 		String regNum = scanner.nextLine();
 		
 		Iterator<Music> it = musics.iterator();
@@ -134,6 +134,8 @@ public class MusicManagement {
 			System.out.println("많이 재생된 인기 음악이 존재하지 않습니다.");
 			return;
 		}
+		
+		System.out.printf("\n--- 재생횟수 %d 회 ---\n", max);
 		
 		// entrySet() 이용하여, Map의 엔드리 추출
 		for(Map.Entry<String, Integer> entry : musicPlayCount.entrySet()) {
