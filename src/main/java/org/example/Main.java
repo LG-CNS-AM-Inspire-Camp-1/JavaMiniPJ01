@@ -27,7 +27,7 @@ public class Main {
             System.out.println("6. 계좌 관리 시스템");
             System.out.println("7. 식당 관리 시스템");
             System.out.println("8. 로또 시스템");
-            System.out.println("9. 포켓몬");
+            System.out.println("9. 보유 포켓몬 관리 시스템");
             System.out.println("0. 프로그램 종료 ");
             System.out.print("선택 : ");
 
@@ -60,6 +60,9 @@ public class Main {
                 case 8:
                     new LotteryMain().LotteryManagementProcess(scanner);
                     break;
+                case 9:
+                	Pokemon(scanner);
+                	break;
                 case 0:
                     System.out.println("프로그램을 종료합니다.");
                     scanner.close();
@@ -275,6 +278,47 @@ public class Main {
                     return;
                 default:
                     System.out.println("유효하지 않은 입력입니다. 다시 입력해주세요!");
+            }
+        }
+    }
+    
+    public void Pokemons(Scanner scanner) {
+        PokemonBox pokemonBox = new PokemonBox();      
+
+        while (true) {
+            System.out.println("1. 포켓몬 잡기");
+            System.out.println("2. 보유 포켓몬 조회");
+            System.out.println("3. 보유 포켓몬 검색");
+            System.out.println("4. 포켓몬 닉네임 변경");
+            System.out.println("5. 포켓몬 놓아주기");
+            System.out.println("6. 종료");
+            System.out.print("행동을 선택해주세요 : ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                	pokemonBox.catchPokemon(scanner);
+                	break;
+                case 2: 
+                	pokemonBox.listPokemons();
+                	break;
+                case 3:
+                	pokemonBox.searchPokemons(scanner);
+                	break;
+                case 4:
+                	pokemonBox.changePokemonNickname(scanner);
+                	break;
+                case 5:
+                	pokemonBox.releasePokemon(scanner);
+                	break;
+                case 6: {
+                    System.out.println("프로그램을 종료합니다.");
+                    
+                    return;
+                }
+                default:
+                	System.out.println("올바른 번호를 선택해주세요.");
             }
         }
     }
