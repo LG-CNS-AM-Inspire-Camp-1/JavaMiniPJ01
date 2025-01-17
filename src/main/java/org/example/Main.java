@@ -225,6 +225,7 @@ public class Main {
     // 식당 관리 메서드
     private static void RestaurantManagementMethod(Scanner scanner) {
         RestaurantManagement management = new RestaurantManagement();
+        management.addDummy();
 
         while (true) {
             System.out.println("\n=== 식당 관리 시스템 ===");
