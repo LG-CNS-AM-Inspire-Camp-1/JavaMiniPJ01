@@ -6,6 +6,17 @@ import java.util.Scanner;
 public class RestaurantManagement {
     private List<Restaurant> restaurants = new ArrayList<>(); // 식당 리스트
 
+    public void addDummy() {
+        // 더미 데이터 추가
+        restaurants.add(new Restaurant(1, "김밥천국", "한식", "참치김밥", "3500", 3));
+        restaurants.add(new Restaurant(2, "피자헛", "양식", "치즈크러스트 피자", "10000", 2));
+        restaurants.add(new Restaurant(3, "스타벅스", "카페", "카라멜 마끼아또", "5300", 2));
+        restaurants.add(new Restaurant(4, "돈까스정", "일식", "등심돈까스", "9000", 2));
+        restaurants.add(new Restaurant(5, "통나무 닭갈비", "한식", "닭갈비", "9000", 5));
+        restaurants.add(new Restaurant(6, "토담 막국수", "한식", "들기름 막국수", "8000", 4));
+        System.out.println("더미 데이터 추가 완료");
+    }
+
 
     // 1 → 식당 등록
     public void addRestaurant(Scanner scanner) {
