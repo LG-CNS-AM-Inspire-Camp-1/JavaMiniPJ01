@@ -53,7 +53,7 @@ public class BankApp {
 				break;
 			case 0:
 				System.out.println("프로그램을 종료합니다.");
-				scanner.close();
+//				scanner.close();
 				return;
 			default:
 				System.out.println("\n올바른 값을 입력하세요.");

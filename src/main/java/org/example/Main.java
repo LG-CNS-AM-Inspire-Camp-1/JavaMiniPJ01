@@ -1,29 +1,71 @@
 package org.example;
 
-import java.util.Scanner;
-
+import org.example.AccountSystem.BankApp;
+import org.example.EmailSubscribe.Subscriber;
+import org.example.EmailSubscribe.SubscriptionException;
+import org.example.EmailSubscribe.SubscriptionManager;
 import org.example.KDHRestaurant.RestaurantManagement;
 import org.example.Lottery.LotteryMain;
 import org.example.ShoppingManagement.ShoppingManagement;
 import org.example.kudong.KUDONGMain;
 import org.example.movie.MovieOperator;
-import org.example.AccountSystem.BankApp;
-import org.example.EmailSubscribe.Subscriber;
-import org.example.EmailSubscribe.SubscriptionException;
-import org.example.EmailSubscribe.SubscriptionManager;
 import org.example.musicManagement.MusicManagement;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        processSubscriptionManagement(scanner);
-        processMusicManagement(scanner);
-        runMovieOperator(scanner);
-        RestaurantManagementMethod(scanner); // 김대현->식당관리
-        new LotteryMain().LotteryManagementProcess(scanner); // 김우영
-        KUDONGMain.run(scanner); // 구동혁-> 게임 서버 플레이어 관리
-        ShoppingManagement(scanner); // 김지현 쇼핑몰관리
-        BankApp.bankStart(scanner);
+
+        while(true) {
+            System.out.println("\n======== 프로그램 목록 ========");
+            System.out.println("1. 이메일 구독 관리 시스템 ");
+            System.out.println("2. 음악 목록 관리 시스템");
+            System.out.println("3. 영화 관리 시스템");
+            System.out.println("4. 게임서버 플레이어 관리 시스템");
+            System.out.println("5. 상품 관리 시스템");
+            System.out.println("6. 계좌 관리 시스템");
+            System.out.println("7. 식당 관리 시스템");
+            System.out.println("8. 로또 시스템");
+            System.out.println("9. 포켓몬");
+            System.out.println("0. 프로그램 종료 ");
+            System.out.print("선택 : ");
+
+            int choiceProgram = scanner.nextInt();
+            scanner.nextLine();
+
+
+            switch (choiceProgram) {
+                case 1:
+                    processSubscriptionManagement(scanner);
+                    break;
+                case 2:
+                    processMusicManagement(scanner);
+                    break;
+                case 3:
+                    runMovieOperator(scanner);
+                    break;
+                case 4:
+                    KUDONGMain.run(scanner);
+                    break;
+                case 5:
+                    ShoppingManagement(scanner);
+                    break;
+                case 6:
+                    BankApp.bankStart(scanner);
+                    break;
+                case 7:
+                    RestaurantManagementMethod(scanner);
+                    break;
+                case 8:
+                    new LotteryMain().LotteryManagementProcess(scanner);
+                    break;
+                case 0:
+                    System.out.println("프로그램을 종료합니다.");
+                    scanner.close();
+                    return;
+            }
+        }
     }
 
     // 구독 관리 메서드
@@ -67,6 +109,7 @@ public class Main {
                         System.out.print("수정할 이름 입력: ");
                         String updateName = scanner.nextLine();
                         manager.updateSubscriber(updateEmail, updateName, userInfo);
+                        break;
 
                     case 4:
                         System.out.print("삭제할 이메일 입력: ");
