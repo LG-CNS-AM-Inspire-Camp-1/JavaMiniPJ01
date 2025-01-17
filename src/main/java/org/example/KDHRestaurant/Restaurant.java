@@ -20,7 +20,7 @@ public class Restaurant {
     @Override
     public String toString() {
         return String.format(
-                "식당 고유 ID: %d, 식당 이름: %s, 카테고리: %s, 대표 음식: %s, 가격: %s, 추천 수: %d",
+                "식당 고유 ID: %d | 식당 이름: %s | 카테고리: %s | 대표 음식: %s | 가격: %s | 추천 수: %d",
                 id, name, category, signatureDish, priceRange, recommendationCount
         );
     }
