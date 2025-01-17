@@ -10,6 +10,7 @@ import org.example.ShoppingManagement.ShoppingManagement;
 import org.example.kudong.KUDONGMain;
 import org.example.movie.MovieOperator;
 import org.example.musicManagement.MusicManagement;
+import org.example.Pokemon.*;
 
 import java.util.Scanner;
 
@@ -61,7 +62,7 @@ public class Main {
                     new LotteryMain().LotteryManagementProcess(scanner);
                     break;
                 case 9:
-                	Pokemon(scanner);
+                	Pokemons(scanner);
                 	break;
                 case 0:
                     System.out.println("프로그램을 종료합니다.");
@@ -282,8 +283,8 @@ public class Main {
         }
     }
     
-    public void Pokemons(Scanner scanner) {
-        PokemonBox pokemonBox = new PokemonBox();      
+    public static void Pokemons(Scanner scanner) {
+        PokemonBox pokemonBox = new PokemonBox();
 
         while (true) {
             System.out.println("1. 포켓몬 잡기");
